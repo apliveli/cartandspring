@@ -12,7 +12,7 @@ class nonlin_cart_and_spring:
     This class creates a class object of a cart and spring system and plots
     the carts non-linear motion as time moves forward. 
     
-    potential used to calculate e.o.m : U = (1/12)*k^3(x-L)^3
+    potential used to calculate e.o.m : U = k^3*x^2
     
     Limits
     -------
