@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#importing required libraires
 import numpy as np
 import matplotlib.pyplot as plt
 #ode solver
 import scipy.integrate as si
+from tkinter import *
 
 class nonlin_cart_and_spring:
     """
     This class creates a class object of a cart and spring system and plots
     the carts non-linear motion as time moves forward. 
     
-    potential used to calculate e.o.m : U = (1/12)k^3*x^4
+    potential used to calculate e.o.m : U = (1/12)k^3(x)^4
     
     Limits
     -------
@@ -53,7 +53,6 @@ class nonlin_cart_and_spring:
         if x_0 < self.x_0[0]:
             print("Error: Initial position of cart 2 cannot be less than cart 1")
             return
-        
         self.m=np.append(self.m,m)
         self.x_0 = np.append(self.x_0,x_0)
         self.y_0 = np.append(self.y_0,y_0)
@@ -213,8 +212,6 @@ class nonlin_cart_and_spring:
             #plotting 
             plt.plot(t,x_1,color='blue')
             plt.plot(t,x_2,color='orange')
-            plt.plot(t,x_1)
-            plt.plot(t,x_2)
             plt.title("2 Carts 2 Springs")
             plt.xlabel("Time (s)")
             plt.ylabel("Postion")
@@ -245,8 +242,95 @@ class nonlin_cart_and_spring:
              
         else:
             print("Too many carts or springs were added to the system. Limit 2 carts and 3 spring")
-
-
-
-
-
+            
+    def display(self):
+        """
+        Displays the values of the system
+        """
+        if self.cart_count == 1 and self.spring_count == 1:
+            master = Tk()
+            #Cart 1
+            Label(master,text="CART 1: ").grid(row=0)
+            Label(master,text="Mass: " + str(self.m[0])).grid(row=1, column=1)
+            Label(master,text="Initial Pos: " + str(self.x_0[0])).grid(row=1, column=2)
+            Label(master,text="Initial Velocity: " + str(self.y_0[0])).grid(row=1, column=3)
+            Label(master,text="Friction Coef: " + str(self.b[0])).grid(row=1, column=4)
+            #Spring 1
+            Label(master,text="Spring 1: ").grid(row=3)
+            Label(master,text="Spring Constant: " + str(self.k[0])).grid(row=4, column=1)
+            Label(master,text="Spring length: " + str(self.L[0])).grid(row=4, column=3)
+            
+            mainloop( )
+           
+        elif self.cart_count == 1 and self.spring_count == 2:
+            master = Tk()
+            #Cart 1
+            Label(master,text="CART 1: ").grid(row=0)
+            Label(master,text="Mass: " + str(self.m[0])).grid(row=1, column=1)
+            Label(master,text="Initial Pos: " + str(self.x_0[0])).grid(row=1, column=2)
+            Label(master,text="Initial Velocity: " + str(self.y_0[0])).grid(row=1, column=3)
+            Label(master,text="Friction Coef: " + str(self.b[0])).grid(row=1, column=4)
+            #Spring 1
+            Label(master,text="Spring 1: ").grid(row=3)
+            Label(master,text="Spring Constant: " + str(self.k[0])).grid(row=4, column=1)
+            Label(master,text="Spring length: " + str(self.L[0])).grid(row=4, column=3)
+            #Spring 2
+            Label(master,text="Spring 2: ").grid(row=6)
+            Label(master,text="Spring Constant: " + str(self.k[1])).grid(row=7, column=1)
+            Label(master,text="Spring length: " + str(self.L[1])).grid(row=7, column=3)
+            
+            mainloop( )
+          
+        elif self.cart_count == 2 and self.spring_count == 2:
+            master = Tk()
+            #Cart 1
+            Label(master,text="CART 1: ").grid(row=0)
+            Label(master,text="Mass: " + str(self.m[0])).grid(row=1, column=1)
+            Label(master,text="Initial Pos: " + str(self.x_0[0])).grid(row=1, column=2)
+            Label(master,text="Initial Velocity: " + str(self.y_0[0])).grid(row=1, column=3)
+            Label(master,text="Friction Coef: " + str(self.b[0])).grid(row=1, column=4)
+            #Spring 1
+            Label(master,text="Spring 1: ").grid(row=3)
+            Label(master,text="Spring Constant: " + str(self.k[0])).grid(row=4, column=1)
+            Label(master,text="Spring length: " + str(self.L[0])).grid(row=4, column=3)
+            #Spring 2
+            Label(master,text="Spring 2: ").grid(row=6)
+            Label(master,text="Spring Constant: " + str(self.k[1])).grid(row=7, column=1)
+            Label(master,text="Spring length: " + str(self.L[1])).grid(row=7, column=3)
+            #Cart 2
+            Label(master,text="CART 2: ").grid(row=9)
+            Label(master,text="Mass: " + str(self.m[1])).grid(row=10, column=1)
+            Label(master,text="Initial Pos: " + str(self.x_0[1])).grid(row=10, column=2)
+            Label(master,text="Initial Velocity: " + str(self.y_0[1])).grid(row=10, column=3)
+            Label(master,text="Friction Coef: " + str(self.b[1])).grid(row=10, column=4)
+            
+            mainloop( )
+            
+        elif self.cart_count == 2 and self.spring_count == 3:
+            master = Tk()
+            #Cart 1
+            Label(master,text="CART 1: ").grid(row=0)
+            Label(master,text="Mass: " + str(self.m[0])).grid(row=1, column=1)
+            Label(master,text="Initial Pos: " + str(self.x_0[0])).grid(row=1, column=2)
+            Label(master,text="Initial Velocity: " + str(self.y_0[0])).grid(row=1, column=3)
+            Label(master,text="Friction Coef: " + str(self.b[0])).grid(row=1, column=4)
+            #Spring 1
+            Label(master,text="Spring 1: ").grid(row=3)
+            Label(master,text="Spring Constant: " + str(self.k[0])).grid(row=4, column=1)
+            Label(master,text="Spring length: " + str(self.L[0])).grid(row=4, column=3)
+            #Spring 2
+            Label(master,text="Spring 2: ").grid(row=6)
+            Label(master,text="Spring Constant: " + str(self.k[1])).grid(row=7, column=1)
+            Label(master,text="Spring length: " + str(self.L[1])).grid(row=7, column=3)
+            #Cart 2
+            Label(master,text="CART 2: ").grid(row=9)
+            Label(master,text="Mass: " + str(self.m[1])).grid(row=10, column=1)
+            Label(master,text="Initial Pos: " + str(self.x_0[1])).grid(row=10, column=2)
+            Label(master,text="Initial Velocity: " + str(self.y_0[1])).grid(row=10, column=3)
+            Label(master,text="Friction Coef: " + str(self.b[1])).grid(row=10, column=4)
+            #Spring 3
+            Label(master,text="Spring 3: ").grid(row=12)
+            Label(master,text="Spring Constant: " + str(self.k[2])).grid(row=13, column=1)
+            Label(master,text="Spring length: " + str(self.L[2])).grid(row=13, column=3)
+            
+            mainloop( )
